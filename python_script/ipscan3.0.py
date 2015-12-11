@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python
+#!/usr/bin/env python
 #coding = utf-8
 import Queue
 from threading import Thread
@@ -95,7 +95,7 @@ if __name__ == '__main__':
  
     startIp = sys.argv[1]
     endIp = sys.argv[2]
-    PORT = "80"
+    PORT = "8080"
     LOGFILE = open(os.path.abspath('.')+'/'+startIp+'-'+endIp+'.txt', 'w+')
     iplist = ip_range(startIp, endIp)
      
