@@ -1,0 +1,23 @@
+{include file="header.html"}
+{*日志部分*}
+<div id="content">
+{if $notice != ''}
+<div class="new_notice">{$notice}</div>
+{/if}
+{foreach from=$blog_list item=blog}
+<div class="post">
+	<div class="info">
+	<h3 class="title"><a href="{$blog.url}" >{$blog.title}</a></h3>   
+	<span class="time">{$blog.add_time}</span>  
+	<span class="author">发表者：{$blog.user_name}</span>
+    </div>
+{$blog.description}
+<a href="{$blog.url}">详细内容</a>
+
+	     <p style="margin-top:1em;"><a href="{$blog.url}#pl" >评论[{$blog.comments}]</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="{$blog.url}" >阅读[{$blog.views}]</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="{$blog.cat_url}">分类：{$blog.cat_name}</a>&nbsp;&nbsp;|&nbsp;&nbsp;Tags：{$blog.tags}</p>
+  </div>
+{/foreach}
+
+{include file="page.html"}
+
+{include file="footer.html"}

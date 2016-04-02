@@ -1,0 +1,19 @@
+{include file="header.html"}
+<p>
+<table width="100%" >
+  <tr class="tr1">
+    <td>Tag</td>
+    <td>所属日志</td>
+    <td>操作</td>
+  </tr>
+  {foreach from=$tags_list item=tag}
+  <tr>
+    <td>{$tag.tag_name}</td>
+    <td><a href="../blog.php?id={$tag.blog_id}" >{$tag.title}</a></td>
+    <td><a href="admin.php?act=del_tag&id={$tag.tag_id}" >删除</a> </td>
+  </tr>
+  {/foreach}
+</table>
+{include file="page.html"}
+</p>
+{include file="footer.html"}

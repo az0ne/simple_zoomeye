@@ -1,0 +1,26 @@
+{include file="header.html"}
+<p>
+<form action="admin.php?act={$type}" method="post">
+<table width="100%" border="1">
+  <tr>
+    <td>导航标题</td>
+    <td>导航url</td>
+    <td>排序</td>
+    <td>操作</td>
+  </tr>
+  {foreach from=$nav_list item=nav}
+  <tr>
+    <td>{$nav.title}</td>
+    <td>{$nav.content}</td>
+    <td><input name="sort[{$nav.id}][]" type="text" value="{$nav.sort}" size="5" /></td>
+    <td><a href="admin.php?act=edit_nav&id={$nav.id}" >编辑</a> | <a href="admin.php?act=del_nav&id={$nav.id}" >删除</a> </td>
+  </tr>
+  {/foreach}
+    <tr>
+    <td colspan="4"><input type="submit" name="button" id="button" value="修改排序" /></td>
+    </tr>
+</table>
+</form>
+{include file="page.html"}
+</p>
+{include file="footer.html"}

@@ -1,0 +1,59 @@
+{include file="header.html"}
+
+<p>
+<script type="text/javascript" src="../includes/xheditor/xheditor-zh-cn.min.js"></script>
+
+<form action="admin.php?act={$type}" method="post">
+  <table width="100%"  border="1">
+    <tr>
+      <td width="13%" >页面标题</td>
+      <td width="85%" ><input type="text" name="title" id="title" value="{$page.title}" /></td>
+    </tr>
+
+    <tr>
+      <td>
+      页面描述</td>
+      <td><textarea name="description" id="description" rows="10" style="width:98%">{$page.desc}</textarea></td>
+    </tr>
+    <tr>
+      <td>页面内容</td>
+      <td>
+	<div id="auto_copy" style="font-size: 13px;font-family: verdana,arial; color:#FF0000;"></div>
+      <textarea id="editor" name="editor"   style="height:500px; width:98%">{$page.content}</textarea>
+
+      </td>
+    </tr>
+   
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="hidden" name="id" id="id" value="-2" /><input type="submit" name="button" id="button" value="提交" /></td>
+    </tr>
+  </table>
+</form>
+</p>
+
+<script type="text/javascript">
+<!-- {literal} -->
+
+var plugins={
+	Code:{c:'btnCode',t:'插入代码',h:1,e:function(){
+		var _this=this;
+		var htmlCode='<div>插入代码</div><div><textarea id="xheCodeValue" wrap="soft" spellcheck="false" style="width:300px;height:100px;" /></div><div style="text-align:right;"><input type="button" id="xheSave" value="确定" /></div>';			var jCode=$(htmlCode),jType=$('#xheCodeType',jCode),jValue=$('#xheCodeValue',jCode),jSave=$('#xheSave',jCode);
+		jSave.click(function(){
+			_this.loadBookmark();
+			_this.pasteHTML("<p class=\"code\" >" + jValue.val() + "</p><br />");
+			_this.hidePanel();
+			return false;
+		});
+		_this.showDialog(jCode);
+	}}
+}
+var editor=$('#editor').xheditor({plugins:plugins,loadCSS:'<style>body  {font-family:"Arial", "Verdana";font-size:12px;margin: 0;}.code{margin: 5px 0;padding: 10px;text-align: left;display: block;overflow: auto;font-size:20px;background: #FAFAFA;border: 1px solid #f2f2f2;font: 500 1em/1.5em "Lucida Console", "courier new", monospace ;}</style>',tools:'Cut,Copy,Paste,Pastetext,SelectAll,Removeformat,|,Fontface,FontSize,Bold,FontColor,BackColor,|,Img,Flash,Media,Link,Emot,Unlink,|,Code,Preview,btnCode,Fullscreen,Source',skin:'default',upLinkUrl:'admin.php?act=upload&type=file',upImgUrl:'admin.php?act=upload&type=img',upFlashUrl:'admin.php?act=upload&type=flash',upFlashExt:'swf,flv',upMediaUrl:'admin.php?act=upload&type=file'});
+var description=$('#description').xheditor({plugins:plugins,loadCSS:'<style>body  {font-family:"Arial", "Verdana";font-size:12px;margin: 0;}.code{margin: 5px 0;padding: 10px;text-align: left;display: block;overflow: auto;font-size:20px;background: #FAFAFA;border: 1px solid #f2f2f2;font: 500 1em/1.5em "Lucida Console", "courier new", monospace ;}</style>',tools:'Cut,Copy,Paste,Pastetext,SelectAll,Removeformat,|,Fontface,FontSize,Bold,FontColor,BackColor,|,Img,Flash,Media,Link,Emot,Unlink,|,Code,Preview,btnCode,Fullscreen,Source',skin:'default',upLinkUrl:'admin.php?act=upload&type=file',upImgUrl:'admin.php?act=upload&type=img',upFlashUrl:'admin.php?act=upload&type=flash',upFlashExt:'swf,flv',upMediaUrl:'admin.php?act=upload&type=file'});
+
+<!-- {/literal} -->
+</script>
+
+
+
+{include file="footer.html"}

@@ -1,0 +1,6 @@
+<div class="page">
+总共{$page_count}页，当前第{$pg}页 | 页数：
+{foreach from=$page_arr item=page}
+<a href="{$url}{$page.value}" {if $pg eq $page.value}class="page_current"{/if} >{$page.name}</a>
+{/foreach}
+</div>

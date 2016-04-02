@@ -1,0 +1,36 @@
+{include file="header.html"}
+<p>
+<form action="admin.php?act={$type}" method="post">
+  <table width="90%"  border="1">
+    <tr>
+      <td width="150">会员名字</td>
+      <td width="720"><input type="text" name="user_name" id="user_name" value="{$member.user_name}" /></td>
+    </tr>
+        <tr>
+          <td>会员密码</td>
+          <td><input type="text" name="password" id="password" />{if $member.password}如果不修改密码，请保留其为空{/if}</td>
+        </tr>
+        
+        <tr>
+      <td>选择分组</td>
+      <td>
+      <select name="group">
+      {foreach from=$group_list item=group}
+        <option value="{$group.group_id}" {if $member.group_id eq $group.group_id }selected="selected"{/if} >{$group.group_name}</option>
+      {/foreach}
+      
+      </select></td>
+        </tr>
+    <tr>
+      <td>会员email</td>
+      <td><input name="email" type="text" id="email" value="{$member.email}" /></td>
+    </tr>
+    
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" name="button" id="button" value="提交" /></td>
+    </tr>
+  </table>
+</form>
+</p>
+{include file="footer.html"}

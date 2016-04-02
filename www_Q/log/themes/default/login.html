@@ -1,0 +1,25 @@
+{include file="header.html"}
+{*日志部分*}
+<div id="content">
+<div class="pl">
+<form action="user.php?act=act_login" method="post"  name="form1" id="post_form">
+{if $notice != ''}
+<div id="notice">{$notice}</div>
+{/if}
+
+ <p>用户名：<br />
+ <input name="name" type="text" id="name" size="25"/></p>
+   </p>
+ <p>密码：<br />
+    <input name="password" type="password" id="password" size="25" />
+   </p>
+
+   <p>
+   <input name="safe_url" type="hidden" value="{$safe_url}" /> <input type="submit" name="button" id="button" value="登录" />
+  </p>
+</form>
+</div>
+
+{include file="page.html"}
+
+{include file="footer.html"}

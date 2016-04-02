@@ -1,0 +1,41 @@
+{include file="header.html"}
+<p>
+<form action="admin.php?act={$type}" method="post">
+<table width="100%" height="275" border="1">
+  <tr>
+    <td width="111">边栏标题</td>
+    <td width="325"><input name="module_title" type="text" id="module_title" value="{$module.title}" /></td>
+  </tr>
+    <tr>
+    <td width="111">排序</td>
+    <td width="325"><input name="sort" type="text" id="sort" value="{$sort}" /></td>
+  </tr>
+  <tr>
+    <td>插件描述</td>
+    <td><textarea name="module_desc" cols="50" rows="5" id="module_desc">{$module.desc}</textarea></td>
+  </tr>
+  <tr>
+    <td>边栏内容</td>
+    <td><textarea name="module_content" cols="50" rows="10" id="module_content">{$module.content}</textarea></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>
+    <input name="id" type="hidden" value="{$id}" />
+    
+    <!--{if $setup_type eq 1}-->
+    <input type="submit" name="button" id="button" value="安装" />
+    <!--{else}-->
+    <input type="submit" name="button" id="button" value="编辑" />
+    <!--{/if}-->
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+</form>
+</p>
+{include file="footer.html"}

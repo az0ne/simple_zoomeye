@@ -1,0 +1,10 @@
+<div id="page">
+<ol class="pages">
+{if $page_count>1}
+总共{$page_count}页，当前第{$pg}页 | 页数：
+{foreach from=$page_arr item=page}
+<li {if $pg eq $page.value}class="current"{/if}><a href="{$page.url}" >{$page.name}</a></li>
+{/foreach}
+{/if}
+</ol>
+</div>

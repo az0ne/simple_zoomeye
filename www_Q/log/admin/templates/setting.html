@@ -1,0 +1,105 @@
+{include file="header.html"}
+<p>
+<form action="admin.php?act={$type}" method="post">
+<table width="100%" height="275" border="1">
+  <tr>
+    <td width="175">博客名字</td>
+    <td width="460"><input name="blog_name" type="text" id="blog_name" value="{$blog_name}" size="50" /></td>
+  </tr>
+  <tr>
+    <td>博客描述</td>
+    <td><textarea name="blog_desc" cols="50" rows="5" id="blog_desc">{$blog_desc}</textarea></td>
+  </tr>
+  <tr>
+    <td>博客关键字</td>
+    <td><input name="blog_keyword" type="text" id="blog_keyword" value="{$blog_keyword}" size="50" /></td>
+  </tr>
+  <tr>
+    <td>博客地址</td>
+    <td><input name="domain" type="text" id="domain" value="{$domain}" size="50" /></td>
+  </tr>
+  <tr>
+    <td>是否开放博客评论</td>
+    <td>开放
+      <input name="open_comment" type="radio" value="0" {if $open_comment eq 0}checked{/if} />
+      关闭
+      <input name="open_comment" type="radio" value="1" {if $open_comment eq 1}checked{/if} /></td>
+  </tr>
+  <tr>
+    <td>博客评论是否需要审核</td>
+    <td>开放
+      <input name="comment_safe" type="radio" value="0" {if $comment_safe eq 0}checked{/if} />
+      审核
+      <input name="comment_safe" type="radio" value="1" {if $comment_safe eq 1}checked{/if} /></td>
+  </tr>
+  <tr>
+    <td>评论排序方式</td>
+    <td>最新评论排序
+      <input name="comment_sort" type="radio" value="0" {if $comment_sort eq 0}checked{/if} />
+      最早评论排序
+      <input name="comment_sort" type="radio" value="1" {if $comment_sort eq 1}checked{/if} /></td>
+  </tr>
+  <tr>
+    <td>是否开放注册</td>
+    <td>开放
+      <input name="is_reg" type="radio" value="0" {if $is_reg eq 0}checked{/if} />
+      关闭
+      <input name="is_reg" type="radio" value="1" {if $is_reg eq 1}checked{/if} /></td>
+  </tr>
+  <tr>
+    <td>伪静态设置</td>
+    <td>关闭
+      <input name="rewrite" type="radio" value="0" {if $rewrite eq 0}checked{/if} />
+      开启
+      <input name="rewrite" type="radio" value="1" {if $rewrite eq 1}checked{/if} />
+      （Apache用户请将根目录下的htaccess.txt改成.htaccess,Nginx和IIS设置规则请参考安装文档）
+      </td>
+  </tr>
+  <tr>
+    <td>缓存设置</td>
+    <td>关闭
+      <input name="is_cache" type="radio" value="0" {if $is_cache eq 0}checked{/if} />
+      开启
+      <input name="is_cache" type="radio" value="1" {if $is_cache eq 1}checked{/if} />
+      （开启缓存后网站速度将飞快，访问速度接近于访问静态页面，统计数据有所延缓）
+      </td>
+  </tr>  
+  <tr>
+    <td>缓存有效时间</td>
+    <td><input name="cache_lifetime" type="text" id="cache_lifetime" value="{$cache_lifetime}" />
+      （以小时为单位，开启缓存后此设置有效）
+      </td>
+  </tr>
+    <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>每页显示数量</td>
+    <td><input name="page_size" type="text" id="page_size" value="{$page_size}" /></td>
+  </tr>
+  <tr>
+    <td>页数大小</td>
+    <td><input name="pager_size" type="text" id="pager_size" value="{$pager_size}" /></td>
+  </tr>
+  <tr>
+    <td>统计代码</td>
+    <td><textarea name="tj" id="tj" cols="50" rows="5" /> {$tj}</textarea></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="button" id="button" value="提交" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+</form>
+</p>
+{include file="footer.html"}

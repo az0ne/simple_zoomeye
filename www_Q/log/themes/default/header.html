@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>{$page_title}</title>
+<meta name="description" content="{$desc}">
+<meta name="generator" content="Simple-Log 1.3.1" />
+<meta name="author" content="Simple-Log Team" />
+<meta name="copyright" content="Simple-Log" />
+<link href="{$domain}{$templates_dir}style.css" media="all" rev="stylesheet" rel="stylesheet" type="text/css" />
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="{$domain}feed.php" />
+<script src="{$domain}includes/js/jquery.js"></script>
+</head>
+<body>
+
+<div id="container">
+  <div id="header">
+  <div class="logo">
+  <a href="{$domain}index.php">{$blog_name}</a>
+  </div>
+  </div>  <!-- end #header -->
+
+  <div id="nav">
+<ul>
+{foreach from=$nav_list item=nav}
+    <li {if $nav.current eq 1}class="current"{/if}><a href="{$nav.content}" title="{$nav.desc}">{$nav.title}</a></li>
+{/foreach}
+</ul>
+</div>
+  {include file="sidebar.html"} 

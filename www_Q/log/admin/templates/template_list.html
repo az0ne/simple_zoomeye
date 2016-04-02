@@ -1,0 +1,38 @@
+{include file="header.html"}
+<p>
+<!-- start templates list -->
+<div class="list-div">
+  <table width="100%" cellpadding="3" cellspacing="1">
+  <tr><th>当前模板</th></tr>
+  <tr><td>
+    <table>
+      <tr>
+        <td width="250" align="center"><img id="screenshot" src="{$curr_template.screenshot}"/></td>
+        <td valign="top"><strong><span id="templateName">{$curr_template.name}</span></strong> v<span id="templateVersion">{$curr_template.version}</span><br />
+          <span id="templateAuthor"><a href="{$curr_template.uri}" target="_blank">{$curr_template.author}</a></span><br />
+          <span id="templateDesc">{$curr_template.desc}</span><br /></td>
+      </tr>
+    </table>
+  </td></tr>
+  <tr>
+    <th>模板列表</th>
+  </tr>
+  <tr><td>
+  {foreach from=$available_templates item=template}
+    <table style="float:left; width: 220px;">
+    <tr>
+      <td><strong><a href="{$template.uri}" target="_blank">{$template.name}</a></strong></td>
+    </tr>
+    <tr>
+      <td>{if $template.screenshot}<a href="admin.php?act=select_template&template_name={$template.name}"><img src="{$template.screenshot}" border="0" /></a>{/if}</td>
+    </tr>
+    <tr>
+      <td valign="top" style="height:60px;">{$template.desc}</td>
+    </tr>
+    </table>
+  {/foreach}
+  </td></tr>
+  </table>
+</div>
+</p>
+{include file="footer.html"}

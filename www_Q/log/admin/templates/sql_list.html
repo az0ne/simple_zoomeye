@@ -1,0 +1,26 @@
+{include file="header.html"}
+<p>
+<form action="admin.php?act={$type}" method="post">
+  <table width="100%"  border="1">
+   
+    <tr>
+      <td>请选择用作恢复数据库的sql文件</td>
+      <td>
+      <p>请选择用作恢复数据库的sql文件：<br />
+      <!--{foreach from=$sql item=file}-->
+          <input name="sql" type="radio" value="{$file}"/>{$file} <a href="../home/backup/{$file}">下载</a> | <a href="admin.php?act=del_sql_file&file={$file}">删除</a>
+        <br />
+      <!--{/foreach}-->
+      </p>
+
+</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" name="button" id="button" value="恢复" /></td>
+    </tr>
+  </table>
+</form>
+</p>
+
+{include file="footer.html"}

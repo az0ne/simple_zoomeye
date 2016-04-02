@@ -1,0 +1,176 @@
+{include file="header.html"}
+
+<p>
+<script type="text/javascript" src="../includes/xheditor/xheditor-zh-cn.min.js"></script>
+
+<form action="admin.php?act={$type}" method="post">
+  <table width="100%"  border="1">
+    <tr>
+      <td width="13%" >日志名字</td>
+      <td width="85%" ><input type="text" name="title" id="title" value="{$blog.title}" size="50"/></td>
+    </tr>
+        <tr>
+      <td>选择分类</td>
+      <td>
+      <select name="cat">
+      {foreach from=$cat_list item=cat}
+        <option value="{$cat.cat_id}" {if $blog.cat_id eq $cat.cat_id }selected="selected"{/if} >{$cat.cat_name}</option>
+        {foreach from=$cat.children item=children}
+     		 <option value="{$children.cat_id}" {if $blog.cat_id eq $children.cat_id }selected="selected"{/if} >&nbsp;&nbsp;{$children.cat_name}</option>
+      	{/foreach}
+      {/foreach}
+      
+      </select></td>
+        </tr>
+    <tr>
+      <td>设置url</td>
+      <td>
+      <p>
+     {if $rewrite}
+          <input type="radio" name="url_type" value="1" id="set_url" {if $url_type eq 1}checked="checked" {/if} />
+          简单重写 (类似{$u}blog/1.html)
+        <br />
+   
+          <input type="radio" name="url_type" value="2" id="set_url" {if $url_type != 1}checked="checked" {/if} />
+          自定义 
+          {$u}blog/<input name="url" type="text" value="{if $url_type != 1}{$url_type}{/if}" size="40" />
+        <br />
+      {else}
+      <input type="hidden" name="url_type" value="{$url_type}" id="set_url" />
+          网站没有开启rewrite，如果需要使用伪静态优化请到博客设置中开启
+      {/if} 
+      </p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+      日志描述</td>
+      <td><textarea name="description" id="description" rows="10" style="width:98%">{$blog.description}</textarea></td>
+    </tr>
+    <tr>
+      <td>日志内容</td>
+      <td>
+	<div id="auto_copy" style="font-size: 13px;font-family: verdana,arial; color:#FF0000;"></div>
+      <textarea id="editor" name="editor"   style="height:500px; width:98%">{$blog.content}</textarea>
+
+      </td>
+    </tr>
+    <tr>
+      <td>评论设置</td>
+      <td>开放
+      <input name="blog_comment" type="radio" value="0" {if $blog.open_type eq 0}checked{/if} />
+      关闭
+      <input name="blog_comment" type="radio" value="1" {if $blog.open_type eq 1}checked{/if}/></td><td width="2%"></td>
+    </tr>
+    <tr>
+      <td>Tags</td>
+      <td>
+      <input name="tags" type="text" value="{$tags}" size="40" />（用空格分隔每个tag）</td>
+    </tr>
+    <tr>
+      <td>权限控制</td>
+      <td><p>查看密码：
+          <input type="text" name="password" id="password" value="{$blog.password}" />
+（如果不需要设置查看密码，请保留为空）</p>
+      <p>允许查看的用户组（默认为所有用户组）：<br />
+      <!--{foreach from=$group_list item=group}-->
+          <input name="group[]" type="checkbox" value="{$group.group_id}" {if $group.flag eq 1}checked="checked"{/if} />
+          {$group.group_name}
+        <br />
+      <!--{/foreach}-->
+      </p>
+
+</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="hidden" name="id" id="id" value="{$id}" /><input type="submit" name="button" id="button" value="提交" /></td>
+    </tr>
+  </table>
+</form>
+</p>
+
+<script type="text/javascript">
+<!-- {literal} -->
+
+var plugins={
+	Code:{c:'btnCode',t:'插入代码',h:1,e:function(){
+		var _this=this;
+		var htmlCode='<div>插入代码</div><div><textarea id="xheCodeValue" wrap="soft" spellcheck="false" style="width:300px;height:100px;" /></div><div style="text-align:right;"><input type="button" id="xheSave" value="确定" /></div>';			var jCode=$(htmlCode),jType=$('#xheCodeType',jCode),jValue=$('#xheCodeValue',jCode),jSave=$('#xheSave',jCode);
+		jSave.click(function(){
+			_this.loadBookmark();
+			_this.pasteHTML("<p class=\"code\" >" + jValue.val() + "</p><br />");
+			_this.hidePanel();
+			return false;
+		});
+		_this.showDialog(jCode);
+	}}
+}
+var editor=$('#editor').xheditor({plugins:plugins,loadCSS:'<style>body  {font-family:"Arial", "Verdana";font-size:12px;margin: 0;}.code{margin: 5px 0;padding: 10px;text-align: left;display: block;overflow: auto;font-size:20px;background: #FAFAFA;border: 1px solid #f2f2f2;font: 500 1em/1.5em "Lucida Console", "courier new", monospace ;}</style>',tools:'Cut,Copy,Paste,Pastetext,SelectAll,Removeformat,|,Fontface,FontSize,Bold,FontColor,BackColor,|,Img,Flash,Media,Link,Emot,Unlink,|,Code,Preview,btnCode,Fullscreen,Source',skin:'default',upLinkUrl:'admin.php?act=upload&type=file',upImgUrl:'admin.php?act=upload&type=img',upFlashUrl:'admin.php?act=upload&type=flash',upFlashExt:'swf,flv',upMediaUrl:'admin.php?act=upload&type=file'});
+var description=$('#description').xheditor({plugins:plugins,loadCSS:'<style>body  {font-family:"Arial", "Verdana";font-size:12px;margin: 0;}.code{margin: 5px 0;padding: 10px;text-align: left;display: block;overflow: auto;font-size:20px;background: #FAFAFA;border: 1px solid #f2f2f2;font: 500 1em/1.5em "Lucida Console", "courier new", monospace ;}</style>',tools:'Cut,Copy,Paste,Pastetext,SelectAll,Removeformat,|,Fontface,FontSize,Bold,FontColor,BackColor,|,Img,Flash,Media,Link,Emot,Unlink,|,Code,Preview,btnCode,Fullscreen,Source',skin:'default',upLinkUrl:'admin.php?act=upload&type=file',upImgUrl:'admin.php?act=upload&type=img',upFlashUrl:'admin.php?act=upload&type=flash',upFlashExt:'swf,flv',upMediaUrl:'admin.php?act=upload&type=file'});
+
+var sHtml;
+function auto_copy()
+{
+	sHtml=editor.getSource();
+	var desc=description.getSource();
+	var ss=$('#title').val();
+	var id=$('#id').val();
+	p='content='+sHtml+'&title='+ss+'&desc='+desc+'&id='+id;
+	$('#auto_copy').html('正在自动保存到草稿箱');
+	$.ajax({url:'admin.php?act=auto_save',type:'post', dataType:'json',data:p,success:show_data});
+}
+setInterval("auto_copy();", 60000);
+
+
+
+function show_data(data)
+{
+	if(data.error!='no')
+	{
+		$('#auto_copy').html(data.error);
+	}
+	else
+	{
+		$('#auto_copy').html(data.content);
+	}
+}
+
+function get_auto_data()
+{
+	var id=$('#id').val();
+	p='id='+id;
+	$('#auto_copy').html('数据正在更新中.....');
+	$.ajax({url:'admin.php?act=get_auto_save',type:'post', dataType:'json',data:p,success:update_data});
+};
+
+function update_data(data)
+{
+	editor.setSource(data.content)
+	description.setSource(data.desc)
+	$('#title').val(data.desc);
+	$('#auto_copy').html('数据更新成功');
+}
+
+$(document).ready(function()
+{
+	var id=$('#id').val();
+	var p='id='+id;
+	$.ajax({url:'admin.php?act=check_auto_date',type:'post', dataType:'json',data:p,success:show_check_data});
+})
+
+function show_check_data(data)
+{
+
+	if(data!='no')
+	{
+		$('#auto_copy').html(data);
+	}
+}
+
+<!-- {/literal} -->
+</script>
+
+
+
+{include file="footer.html"}

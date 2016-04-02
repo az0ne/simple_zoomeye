@@ -1,0 +1,88 @@
+{include file="header.html"}
+<p>
+<form action="admin.php?act={$act_type}" method="post">
+<table width="100%" border="1">
+  <tr>
+    <td colspan="2">修改        
+      <select name="template_file" id="template_file">
+      {foreach from=$t_list item=t}
+        <option value="{$t}" {if $file eq $t }selected="selected"{/if} >{$t}</option>
+      {/foreach}
+      </select>
+    </td>  
+    </tr>
+  <tr>
+    <td>内容</td>
+    <td ><textarea name="data" cols="90" rows="20" id="date">{$data}</textarea></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input name="type" type="hidden" id="type" value="{$type}" />
+      <input name="file" type="hidden" id="file" value="{$file}" /><input type="submit" name="button" id="button" value="修改" /></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+</form>
+</p>
+
+<script type="text/javascript">
+var ajax_post=2;
+<!-- {literal} -->
+$(document).ready(function()
+{
+
+//	$('#button').click(function(){
+//		$('#update_date').html('数据提交中...');
+//		p='template_file='+$("#template_file").val()+'&content='+$('textarea').val();
+//		$.ajax({url:'admin.php?act=ajax_post_page_data',type:'post', dataType:'json',data:p,success:update_data});
+//	});
+		
+	$("#template_file").change(function(){  
+	    $('#update_date').html('数据加载中...');
+		p='template_file='+$("select option:selected").val();
+		$.ajax({url:'admin.php?act=get_page_data',type:'post', dataType:'json',data:p,success:show_data});
+	}); 
+	
+});
+function show_data(data)
+{
+	if(data.error!='no')
+	{
+		$('#update_date').html(data.error);
+	}
+	else
+	{
+
+		$('#update_date').html('');
+		$('textarea').val(data.content);
+	}
+}
+
+function update_data(data)
+{
+	if(data.error!='no')
+	{
+		$('#update_date').html(data.error);
+	}
+	else
+	{
+		$('#update_date').html('数据更新成功');
+	}
+}
+
+<!-- {/literal} -->
+</script>
+
+{include file="footer.html"}

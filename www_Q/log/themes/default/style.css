@@ -1,0 +1,65 @@
+@charset "utf-8";
+body,h1,h2,h3,p,blockquote,dl,dt,dd,ul,ol,li,button,input,textarea {margin: 0; padding: 0;}
+body {font:13px Tahoma, Helvetica, Arial, sans-serif;}
+img {border: 0;}
+a, a:link, a:visited {text-decoration: none;}
+#container {width:80%; margin:auto auto;}
+#header { clear:both;overflow:auto;padding-top: 25px; }
+#header .logo {float: left;}
+#header .logo a {font-size: 25px; height:35px;}
+
+#nav {height:34px; line-height:34px;margin-top:20px;background: #999;border-bottom:1px solid #e6e6e6; border-top:1px solid #fff;}
+#nav ul {list-style-type: none;}
+#nav ul li {float: left;text-transform: uppercase;font-weight: normal;font-size: 12px; height:35px; overflow:hidden; font-family:'微软雅黑',Tahoma, Arial; }
+#nav ul li a {color: #ececec;display:inline-block;padding: 0 12px; height:35px; line-height:33px; }
+#nav li a:hover {color:#000; text-decoration:none; background:none;background:#e6e6e6;color:#000;}
+
+
+#content {width: 83%;float: right;padding-bottom: 20px;padding-top: 15px;}
+.post {padding-bottom:15px;padding-left:3%;width:97%;font-weight: normal;font-size: 12px;overflow:hidden; font-family:'微软雅黑',Tahoma, Arial;}
+.post .info{ padding-top:5px; padding-bottom:5px;border-top:1px dashed #ccc;}
+.title {padding-bottom:5px;}	
+.title a{ color:#000}	
+.code {margin: 5px 0;padding: 10px;text-align: left;display: block;overflow: auto;  font: 500 1em/1.5em 'Lucida Console', 'courier new', monospace ;background: #FAFAFA; border: 1px solid #f2f2f2;  
+}
+.post img {max-width: 580px;margin: 2px 0px;}
+.author {font-size: 100%;color: #666666;}	
+.time {font-size: 100%;color: #666666;}	
+
+.pl {padding-bottom:15px;padding-left:3%;width:97%;font-size:12px;}
+#notice{font-weight: normal;font-size: 12px;overflow:hidden; font-family:'宋体',Tahoma, Arial;padding-bottom:10px; padding-top:10px；}
+.new_notice {padding-bottom:15px;padding-left:3%;width:97%;font-weight: normal;font-size: 12px;overflow:hidden; font-family:'宋体',Tahoma, Arial;}
+#post_comment,#post_form,#user_reg {border-top:1px dashed #ccc; padding-top:15px;}
+#post_comment p,#post_form p,#user_reg p,#replay_form p{font-weight: normal;font-size: 12px;overflow:hidden; font-family:'宋体',Tahoma, Arial;padding-bottom:10px;}
+#post_comment #comment_button,#post_form #button,#user_reg #button{display:block; padding-left:10px;padding-right:10px;}
+.pl .p_list{font-weight: normal;font-size: 15px;overflow:hidden; font-family:'宋体',Tahoma, Arial;padding-top:10px;padding-bottom:10px;border-top:1px dashed #ccc; width:100%}
+.pl ol {list-style: none; }
+#comment_list {margin-bottom: 10px;}
+#comment_list ol {list-style: none;}
+ol#comment_list ol {padding-top: 5px;}
+ol#comment_list li {border: 1px solid #eee; margin-top: 5px;overflow: hidden;padding-left:10px;padding-right:10px;padding-bottom:10px; margin-bottom:10px;}
+ol#comment_list ol li {background: #fff;}
+ol#comment_list li.odd {background:#f6f6f6;}
+ol#comment_list li .comment_reply {text-align: right;}
+ol#comment_list li .comment_reply a {border: none;color: #aaa;font-size: 12px; border-bottom:10px;}
+.comment_data {color: #999;font-size: 12px;padding-top: 5px;padding-bottom:5px;}
+
+#sidebar {width: 17%;float: left;padding-top: 10px;padding-bottom: 50px;}
+#sidebar h2 {font-weight: normal;font-size: 15px;margin-top:5px;padding-top:5px;padding-bottom:5px;border-top: 1px dashed #ccc;}
+#sidebar ul {list-style: none;padding-top:5px;}
+#sidebar li {display: list-item;list-style-type: none;}
+#sidebar li a:hover, #sidebar p a:hover{color: #000;font-size:12px;display: block;text-decoration: none;background-color: #f5f5f5;padding: 3px 0 3px 0;}
+#sidebar li a{font-size:12px;color: #666;text-decoration: none;display: block;padding: 3px 0 3px 0;}
+#sidebar .children{padding-left:20px;}
+#sidebar form,#sidebar p{padding-top:5px;}
+#footer {clear: both;background: #999;color: #ececec;padding: 10px 15px; margin-bottom:15px;text-align: center;font-size:11px;}
+#footer a {color: #ececec;}
+#footer a:hover {color: #ccc;}
+
+#page{padding-left:3%;width:97%; padding-bottom:15px;}
+ol.pages {color: #666;list-style: none;font-size: 12px;line-height: 30px;font-family: "Lucida Grande",Verdana,"Bitstream Vera Sans",Arial,sans-serif;border-top:1px dashed #ccc;}
+ol.pages li {margin: 0 5px 0 0;display: inline;}
+ol.pages li a {padding: 2px 6px;border: 1px solid #eee;text-decoration: none;}
+ol.pages li.current a {background: #999;border-color: #999;color: #fff;}
+
+.clearfloat { font-size: 0; height: 0; width: 0; clear: both; overflow:hidden;}

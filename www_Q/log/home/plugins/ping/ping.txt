@@ -1,0 +1,2 @@
+http://blogsearch.google.com/ping/RPC2
+http://ping.baidu.com/ping/RPC2

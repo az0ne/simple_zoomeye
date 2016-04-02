@@ -1,0 +1,107 @@
+{include file="header.html"}
+{*日志部分*}
+<div id="content">
+<div class="post">
+	<div class="info">
+	<h3 class="title"><a href="{$blog.url}" >{$blog.title}</a></h3>   
+	<span class="time">{$blog.add_time}</span>  
+	<span class="author">发表者：{$blog.user_name}</span>
+    </div>
+    {$blog.content}
+
+	    <p style="margin-top:1em;"><a href="{$blog.url}#pl" >评论[{$blog.comments}]</a>&nbsp;&nbsp;|&nbsp;&nbsp;阅读[{$blog.views}]&nbsp;&nbsp;|&nbsp;&nbsp;<a href="{$blog.cat_url}">分类：{$blog.cat_name}</a>&nbsp;&nbsp;|&nbsp;&nbsp;Tags：{$blog.tags}</p>
+  </div>
+
+<!--{if $open_comment eq 1}-->
+<div class="new_notice">网站已经关闭评论</div>
+<!--{elseif $blog.open_type eq 1}-->
+<div class="new_notice">此日志评论已经关闭</div>
+<!--{else}-->
+<div class="pl"> 
+<div id="replay">
+<div id="replay_box">
+<a name="pl"></a>
+    <form action="post.php?act=pl_post" method="post"  name="post_comment" id="post_comment" >
+<div id="post_comments_notice" style="display:none;padding-bottom:5px;clear:both;font-size: 13px;font-family: verdana,arial; color:#FF0000">评论数据提交中......</div>
+{insert name='comments_name'}
+  <p>
+  评论内容：<br />
+  <textarea name="content" cols="40" rows="5"></textarea>
+  </p>
+  <p>
+    <input type="button" name="button" id="comment_button1" value="提交" onclick="post()"  />
+  </p>
+</form>
+</div>
+</div>
+<p class="p_list"><a onclick="post()">评论列表</a></p>
+<div id="load_comments_notice" style="display:none;font-size: 13px;font-family: verdana,arial; color:#FF0000">评论数据加载中......</div>
+<ol id="comments_list"></ol></div>
+<!--{/if}-->
+
+<script type="text/javascript">
+var id={$blog.blog_id};
+var u='{$domain}';
+<!-- {literal} -->
+$('#load_comments_notice').css("display","block");
+var geturl=u+"/post.php?act=comments_list&id="+id;
+$.getJSON(geturl,
+function(data){
+	$('#comments_list').html(data.content);
+	$('#load_comments_notice').css("display","none");
+});
+
+
+function post()
+{
+	comment_id=$('#post_comments_id').html();
+	$('#post_comments_notice').show();
+	var params=$('input').serialize();
+	p=params+'&content='+$('textarea').val();
+	var ajaxurl=u+'/post.php?act=post_comment&id='+id+'&comment_id='+comment_id;
+	$.ajax({url:ajaxurl,type:'post', dataType:'json',data:p,success:update_comments});
+}
+
+function update_comments(data)
+{
+	$('#post_comments_notice').css("display","block");
+	if(data.error!='no')
+	{
+		$('#post_comments_notice').html(data.error);
+	}
+	else
+	{
+		$('#post_comments_notice').html('评论发布成功');
+		var post_form=$('#replay_box').html();
+		$('#replay').html('<div id="replay_box">'+post_form+'</div>');
+		$('#comments_list').html(data.content);
+		$('textarea').val('');
+		$('#post_comments_id').remove(); //请客回复id
+	}
+}
+
+function replay(comment_id)
+{
+	$('#post_comments_notice').html('');
+	$('#post_comments_id').remove(); //请客回复id
+	var post_form=$('#replay_box').html();
+	$("#replay_box").remove();
+	$('#box-'+comment_id).append('<div id="replay_box">'+post_form+'<div id="post_comments_id" style="display:none;">'+comment_id+'</div></div><p>&nbsp;</p>');
+}
+
+function page(page_id)
+{
+	$('#load_comments_notice').css("display","block");
+	var geturl=u+"/post.php?act=comments_list&id="+id+"&pg="+page_id;
+	$.getJSON(geturl,
+	function(data){
+		$('#comments_list').html(data.content);
+		$('#load_comments_notice').css("display","none");
+	}); 
+}
+
+	<!-- {/literal} -->
+</script>
+{include file="page.html"}
+
+{include file="footer.html"}

@@ -1,0 +1,30 @@
+<div id="comments"> 
+			<ol id="comment_list"> 
+{foreach from=$comments_list item=comment key=key}
+<li id="box-{$comment.comment_id}" {if $comment.odd eq 1}class='odd'{/if} >
+<div class="comment_data">
+<a name="{$comment.comment_id}">第{$key}楼</a>  {$comment.user_name}{if $comment.user_id eq 0}(未注册用户){/if}  发表于    {$comment.add_time}
+</div>
+ {if $comment.children}
+ {foreach from=$comment.children item=children}
+<ol><li>
+ <div class="comment_data">引用{$children.user_name}发表于的评论:{$children.add_time}</div>
+ {/foreach}
+  {foreach from=$comment.children item=children}
+	 {$children.content}</li></ol>
+ {/foreach}
+ {/if}
+{$comment.content}
+<div class="comment_reply"> 
+                       <a href="javascript:replay({$comment.comment_id});" rel="nofollow" id="replay-{$comment.comment_id}">回复</a>                    </div> 
+</li>
+{/foreach}
+
+      </ol> </div> 
+{if $page_count>1}
+<ol class="pages">
+总共{$page_count}页，当前第{$pg}页 | 页数：
+{foreach from=$page_arr item=page}
+<li {if $pg eq $page.value}class="current"{/if}><a href="javascript:page({$page.value});" >{$page.name}</a></li>
+{/foreach}
+</ol>{/if}

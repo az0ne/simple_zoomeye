@@ -1,0 +1,122 @@
+{include file="header.html"}
+{literal}
+<script type="text/javascript"> 
+$(function() { 
+//全选
+$("#selectall").click(function() { 
+$("input[@name='shareuser']").each(function() { 
+$(this).attr("checked", true); 
+}); 
+}); 
+//反选
+$("#fanall").click(function() { 
+$("input[@name='shareuser']").each(function() { 
+if($(this).attr("checked"))
+{
+$(this).attr("checked", false); 
+}
+else
+{
+$(this).attr("checked", true); 
+}
+}); 
+}); 
+//取消全部
+$("#deselectall").click(function() { 
+$("input[@name='shareuser']").each(function() { 
+$(this).attr("checked", false); 
+}); 
+}); 
+//alert
+$("#alertall").click(function() { 
+$("input[@name='shareuser']").each(function() { 
+if($(this).attr("checked"))
+{
+alert($(this).val());
+}
+}); 
+}); 
+
+}); 
+</script>
+{/literal}
+<p>
+<form action="admin.php?act={$type}" method="post" name="group_form">
+  <table width="90%"  border="1">
+    <tr>
+      <td width="150">分组名字</td>
+      <td width="720"><input type="text" name="group_name" id="group_name" value="{$group.group_name}" /></td>
+    </tr>
+        
+    <tr>
+      <td>权限设置<br />
+全选（空为全选）：<br /><br /></td>
+      <td>
+
+<div class="list-div">
+<table cellspacing='1' id="list-table">
+{foreach from=$action_pri item=priv}
+ <tr>
+  <td width="18%" valign="top" class="first-cell">
+{$priv.lang}:
+  </td>
+  <td>
+    {foreach from=$priv.value key=priv_list item=list}
+    <div style="width:200px;float:left;">
+   <input type="checkbox" name="action_pri[]" value="{$list.act_type}"  class="checkbox" {if $list.select eq 1} checked="true" {/if} />
+    {$list.lang}
+    </div>
+    {/foreach}
+</td></tr>
+{/foreach}
+  <tr>
+    <td align="center" colspan="2" >
+
+    </td>
+  </tr>
+</table>
+</div>
+
+
+
+</td>
+    </tr>
+    
+    <tr>
+      <td>&nbsp;</td>
+      <td>      <input type="checkbox" name="checkall" value="checkbox" onclick="checkAll(this.form, this);" class="checkbox" />全选   
+      <input type="submit" name="button" id="button" value="提交" /></td>
+    </tr>
+  </table>
+</form>
+</p>
+{literal}
+<script language="javascript">
+function checkAll(frm, checkbox)
+{
+  for (i = 0; i < frm.elements.length; i++)
+  {
+    if (frm.elements[i].name == 'action_pri[]' || frm.elements[i].name == 'group_form')
+    {
+      frm.elements[i].checked = checkbox.checked;
+    }
+  }
+}
+
+function check(list, obj)
+{
+  var frm = obj.form;
+
+    for (i = 0; i < frm.elements.length; i++)
+    {
+      if (frm.elements[i].name == "action_code[]")
+      {
+          var regx = new RegExp(frm.elements[i].value + "(?!_)", "i");
+
+          if (list.search(regx) > -1) frm.elements[i].checked = obj.checked;
+      }
+    }
+}
+</script>
+{/literal}
+{include file="footer.html"}

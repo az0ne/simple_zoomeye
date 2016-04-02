@@ -1,0 +1,156 @@
+.cbp-so-scroller {
+  overflow: hidden;
+}
+
+.cbp-so-section {
+}
+
+/* Clear floats of children */
+.cbp-so-section:before,
+.cbp-so-section:after {
+  content: " ";
+  display: table;
+}
+
+.cbp-so-section:after {
+  clear: both;
+}
+
+/* Text styling */
+.cbp-so-section h2 {
+  font-size: 5em;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.cbp-so-section p {
+  font-size: 16px;
+  font-weight: 300;
+} 
+
+
+/* Clear floats of children */
+.cbp-so-side:before,
+.cbp-so-side:after {
+  content: " ";
+  display: table;
+}
+
+.cbp-so-side:after {
+  clear: both;
+}
+
+.cbp-so-side-right {
+  text-align: left;
+}
+
+.cbp-so-side-left {
+  text-align: right;
+}
+
+.cbp-so-side-right img {
+  float: left;
+}
+
+.cbp-so-side-left img {
+  float: right;
+}
+
+/* Initial state (hidden or anything else) */
+@media (min-width:769px) {
+	/* Sides */
+  .no-touch .cbp-so-side {
+    -webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
+    -moz-transition: -moz-transform 0.5s, opacity 0.5s;
+    transition: transform 0.5s, opacity 0.5s;
+  }
+
+  .no-touch .cbp-so-init .cbp-so-side {
+    opacity: 0;
+  }
+
+  .no-touch .sec-head-main {
+    opacity: 0;
+  }
+
+  .no-touch .services-table .col-lg-4 {
+    transform: scale(.5);
+  }
+
+  .no-touch .cbp-so-init .cbp-so-from-left {
+    -webkit-transform: translateX(-800px);
+    -moz-transform: translateX(-800px);
+    transform: translateX(-800px);
+  }
+
+  .no-touch .cbp-so-init .cbp-so-from-right {
+    -webkit-transform: translateX(80px);
+    -moz-transform: translateX(80px);
+    transform: translateX(80px);
+    -webkit-transition: -webkit-transform 0.8s, opacity 0.5s;
+    -moz-transition: -moz-transform 0.8s, opacity 0.5s;
+    transition: transform 0.8s, opacity 0.5s;
+  }
+
+  .no-touch .cbp-so-init .from-top {
+    -webkit-transform: translateY(-80px);
+    -moz-transform: translateY(-80px);
+    transform: translateY(-80px);
+    opacity: 0;
+  }
+
+  .no-touch .cbp-so-section.cbp-so-animate .from-top {
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    transform: translateY(0px);
+    opacity: 1;
+    -webkit-transition: -webkit-transform 0.8s, opacity 0.5s;
+    -moz-transition: -moz-transform 0.8s, opacity 0.5s;
+    transition: transform 0.8s, opacity 0.5s;
+  }
+
+/* Animated state */
+/* add you final states (transition) or your effects (animations) for each side */
+  .no-touch .cbp-so-section.cbp-so-animate .cbp-so-from-left,
+.no-touch .cbp-so-section.cbp-so-animate .cbp-so-from-right {
+    -webkit-transform: translateX(0px);
+    -moz-transform: translateX(0px);
+    transform: translateX(0px);
+    opacity: 1;
+  }
+
+/* For example, add a delay for the right side:
+.cbp-so-section.cbp-so-animate .cbp-so-side-right {
+	-webkit-transition-delay: 0.2s;
+	-moz-transition-delay: 0.2s;
+	transition-delay: 0.2s;
+}
+*/
+
+/* Example media queries */
+  .no-touch .navbar.ms-nav-anim {
+    visibility: hidden;
+  }
+}
+
+@media screen and (max-width: 73.5em) {
+
+  .cbp-so-section h2 {
+    margin: 0;
+  }
+
+  .cbp-so-side img {
+    max-width: 120%;
+  }
+}
+
+@media screen and (max-width: 41.125em) {
+  .cbp-so-side {
+    float: none;
+    width: 100%;
+  }
+
+  .cbp-so-side img {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,7 @@
+模板名字: default
+模板描述: The default simple-log template.
+模板演示地址: http://www.simple-log.com/
+版本: 1.0
+作者: pengwenfei
+作者网址: http://www.simple-log.com/
+以上信息必填

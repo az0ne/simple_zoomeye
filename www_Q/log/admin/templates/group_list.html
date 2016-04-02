@@ -1,0 +1,17 @@
+{include file="header.html"}
+<p>
+<table width="100%" border="1">
+  <tr>
+    <td>分组名字</td>
+    <td>操作</td>
+  </tr>
+  {foreach from=$group_list item=group}
+  <tr>
+    <td><a  href="admin.php?act=edit_group&id={$group.group_id}">{$group.group_name}</a></td>
+    <td><a href="admin.php?act=edit_group&id={$group.group_id}" >编辑</a> | <a href="admin.php?act=del_group&id={$group.group_id}" >删除</a> </td>
+  </tr>
+  {/foreach}
+</table>
+{include file="page.html"}
+</p>
+{include file="footer.html"}

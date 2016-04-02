@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>管理员登陆</title>
+{literal}
+<style>
+.body {background: #CCC;font-family: "Arial";font-weight:bold;color:#737573;font-size:12px;}
+#login{border: 1px solid #739ACE;background:#DEE3EF;margin:150px auto; width:400px;}
+.pass{background: #FFF;}
+</style>
+{/literal}
+</head>
+
+<body class="body">
+
+<div id="login">
+<form action="admin.php?act=login" method="post">
+<br />
+<p align="center">Simple-Log博客系统后台登陆</p>
+<table width=100%  cellspacing=0 cellpadding=3 class="pass">
+<tr>
+	<td valign=middle width=40% align=right>管理员用户名：</td>
+	<td valign=middle><input name="username" type="text" style="width:140px;height:18px;" /></td>
+</tr>
+<tr>
+	<td valign=middle align=right>管理员密码：</td>
+	<td valign=middle><input name="password" type="password" style="width:140px;height:18px;" /></td>
+</tr>
+</table>
+<input name="safe_url" type="hidden" value="{$safe_url}" />
+<p align="center"><input name="" type="submit" value="登陆"  /></p>
+</form>
+<br />
+
+</div>
+</body>
+</html>

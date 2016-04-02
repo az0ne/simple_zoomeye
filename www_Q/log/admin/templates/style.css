@@ -1,0 +1,145 @@
+body  {
+	font-family:"Arial", "Verdana";
+	font-size:12px;
+	background: #DEE3EF;
+	margin: 0;
+	padding: 0;
+}
+
+#main { 
+	background:#DEE3EF;
+	width: 100%; 
+	margin: 0 auto; 
+} 
+#header { 
+	background:#DEE3EF;
+	height:45px;
+	padding: 0 10px;
+	border-bottom:1px solid #739ACE;
+} 
+#header #logo{
+   float:left;
+}
+#header #nav{
+   float:right;
+   padding: 20px 20px 0px 0px;
+}
+#header h1 {
+	margin: 0; 
+	padding: 10px 0;
+	color: #000;
+    font-size: 22px;
+}
+
+
+#menu {
+	float: left; 
+	width: 155px;
+	background:#DEE3EF;
+	padding: 15px 0;
+}
+
+#menu dt { 
+	padding-left: 10px; 
+	line-height:120%; 
+	font-weight:bold; 
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+#menu dd { 
+	padding-bottom: 5px
+}
+#menu dd a {
+	display:block;
+	line-height:160%;
+	color:#000;
+	text-decoration:none;
+	}
+#menu dd a:hover{
+	color:#fff;
+	background: #005681;
+	text-decoration:none; 
+	border-right:1px solid  #005681
+}
+
+#content {
+	padding: 15px 20px;
+	border-left:1px solid #739ACE;
+} 
+
+table,td,tr,th{
+    border:1px #000 solid;
+    border-collapse:collapse;
+}
+
+tr{
+	height:25px;
+}
+
+
+.tr1{
+}
+
+.admin_here {
+  text-decoration:none;
+  display:block;
+  padding:6px 5px 6px 23px;
+  border:1px solid #278296;
+  background:#fff;
+}
+
+.admin_here a {
+  text-decoration:none;
+}
+
+.page {
+  text-decoration:none;
+  display:block;
+  padding:6px 5px 6px 23px;
+  border:1px solid #278296;
+  background:#fff;
+  margin-top:10px;
+}
+
+.page a {
+	padding: 0 5px 0 5px;
+	text-decoration: none;
+}
+
+.page_current{
+	background: #99ccff;
+	border-color: #99ccff;
+	color: #fff;
+}
+
+#footer {
+  border-top: 1px solid #739ACE;
+  text-align: center;
+  padding: 2px 0px 2px 0px;
+  margin-top:10px;
+}
+.clearfloat { 
+	clear:both;
+    height:0;
+    line-height: 0px;
+}
+
+.info {
+  background:#DDDDDD;
+  display:block;
+  padding:6px 5px 6px 23px;
+  border:1px solid #278296;
+}
+
+#edit_mode {
+	padding-bottom:5px;
+	padding-top:5px;
+}
+
+.index{
+    border-collapse:collapse;
+}
+.btnCode {
+	background:transparent url(../../includes/xheditor/img/code.gif) no-repeat 16px 16px;
+	background-position:2px 2px;
+}

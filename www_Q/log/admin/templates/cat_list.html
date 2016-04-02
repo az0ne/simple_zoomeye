@@ -1,0 +1,28 @@
+{include file="header.html"}
+<p>
+<table width="100%" border="1">
+  <tr>
+    <td>分类名字</td>
+    <td>分类位置</td>
+    <td>操作</td>
+  </tr>
+  {foreach from=$cat_list item=cat}
+  <tr>
+    <td><a href="admin.php?act=edit_cat&id={$cat.cat_id}">{$cat.cat_name}</a></td>
+    <td>{$cat.listorder}</td>
+    <td><a href="admin.php?act=edit_cat&id={$cat.cat_id}" >编辑</a> | <a href="admin.php?act=del_cat&id={$cat.cat_id}" >删除</a> </td>
+  </tr>
+  {if $cat.children}
+     {foreach from=$cat.children item=children}
+     <tr>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a title="{$children.cat_desc}" href="admin.php?act=edit_cat&id={$children.cat_id}">{$children.cat_name}</a></td>
+      <td>{$children.listorder}</td>
+      <td><a href="admin.php?act=edit_cat&id={$children.cat_id}" >编辑</a> | <a href="admin.php?act=del_cat&id={$children.cat_id}" >删除</a> </td>
+     </tr>
+     {/foreach}
+  {/if}
+  {/foreach}
+</table>
+{include file="page.html"}
+</p>
+{include file="footer.html"}

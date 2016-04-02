@@ -1,0 +1,97 @@
+{include file="header.html"}
+<table width="100%" border="0" class="index">
+  <tr>
+    <td>网站信息</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>个人信息：</td>
+    <td>用户名：{$user_name} 组别：{$user_group} 上次登录时间：{$last_time} 上次登录IP：{$last_ip}</td>
+  </tr>
+  <tr>
+    <td>今日评论/评论总数</td>
+    <td>{$today_comments}/{$comments}</td>
+  </tr>
+    <tr>
+    <td>今日注册会员/会员总数</td>
+    <td>{$today_users}/{$users_num}</td>
+  </tr>
+    <tr>
+    <td></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>程序相关信息</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Simple-Log当前版本:</td>
+    <td>{$version}</td>
+  </tr>
+  <tr>
+    <td>Simple-Log最新版本:</td>
+    <td><span id="new_version">{$new_version}</span></td>
+  </tr>
+  <tr>
+    <td>程序开发:</td>
+    <td><a href="http://www.simple-log.com" target="_blank">pengwenfei</a></td>
+  </tr>
+  <tr>
+    <td>致谢:</td>
+    <td><a href="http://www.simple-log.com/api.php?act=url&amp;id=5" target="_blank">谢谢所有支持和帮助Simple-log的朋友</a></td>
+  </tr>
+  <tr>
+    <td>官方主页:</td>
+    <td><a href="http://www.simple-log.com" target="_blank">www.simple-log.com</a></td>
+  </tr>
+  <tr>
+    <td>反馈：</td>
+    <td><a href="http://www.simple-log.com/api.php?act=url&amp;id=1">给我们建议</a>| <a href="http://www.simple-log.com/api.php?act=url&amp;id=2">问题反馈</a> | <a href="http://www.simple-log.com/api.php?act=url&amp;id=3">常见问题</a> | <a href="http://www.simple-log.com/api.php?act=url&amp;id=4">下载Simple-log</a></td>
+  </tr>
+      <tr>
+    <td></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>服务器信息</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>服务器信息：</td>
+    <td>{$SERVER_SOFTWARE}</td>
+  </tr>
+  <tr>
+    <td>PHP版本：</td>
+    <td>{$php_version}</td>
+  </tr>
+  <tr>
+    <td>MySQL版本：</td>
+    <td>{$mysql_version}</td>
+  </tr>
+  <tr>
+    <td>服务器显示时间：</td>
+    <td>{$date}</td>
+  </tr>
+  <tr>
+    <td>服务器文件上传允许大小</td>
+    <td>{$upload_max_filesize}</td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+<!-- {literal} -->
+$(document).ready(function()
+{
+	$.ajax({url:'admin.php?act=get_version',type:'post', dataType:'json',success:show_data});
+	
+});
+
+function show_data(data)
+{
+	$('#new_version').html(data.version); 
+	$('#update_date').html(data.notice); 
+}
+<!-- {/literal} -->
+</script>
+
+{include file="footer.html"}

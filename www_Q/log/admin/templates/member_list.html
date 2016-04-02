@@ -1,0 +1,23 @@
+{include file="header.html"}
+<p>
+<table width="100%" border="1">
+  <tr>
+    <td>会员名</td>
+    <td>所属分组</td>
+    <td>注册时间</td>
+    <td>最后登陆时间</td>
+    <td>操作</td>
+  </tr>
+  {foreach from=$user_list item=member}
+  <tr>
+    <td><a title="{$blog.description}" href="admin.php?act=edit_member&id={$member.user_id}">{$member.user_name}</a></td>
+    <td>{$member.group_name}</a></td>
+    <td>{$member.reg_time}</td>
+    <td>{$member.last_time}</td>
+    <td><a href="admin.php?act=edit_member&id={$member.user_id}" >编辑</a> | <a href="admin.php?act=del_member&id={$member.user_id}" >删除</a> </td>
+  </tr>
+  {/foreach}
+</table>
+{include file="page.html"}
+</p>
+{include file="footer.html"}

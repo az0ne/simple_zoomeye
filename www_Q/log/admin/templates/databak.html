@@ -1,0 +1,27 @@
+{include file="header.html"}
+<p>
+<form action="admin.php?act={$type}" method="post">
+  <table width="100%"  border="1">
+   
+    <tr>
+      <td>请选择要备份的数据</td>
+      <td>
+      <p>请选择要备份的数据表（默认为备份所有表）：<br />
+      <!--{foreach from=$tables item=table}-->
+          <input name="table[]" type="checkbox" value="{$table.value}" {if $table.is_fbtable eq 1}checked="checked"{/if}/>
+          {$table.value}
+        <br />
+      <!--{/foreach}-->
+      </p>
+
+</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" name="button" id="button" value="提交" /></td>
+    </tr>
+  </table>
+</form>
+</p>
+
+{include file="footer.html"}
